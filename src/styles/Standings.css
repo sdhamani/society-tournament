@@ -109,20 +109,27 @@
 .rank {
   font-weight: 600;
   color: #D32F2F;
+  text-align: left;
 }
 
 .player {
   font-weight: 600;
+  text-align: left;
 }
 
-.wins,
-.matches,
-.points {
-  text-align: center;
+.wins {
+  text-align: center !important;
+  font-weight: 600;
+}
+
+.matches {
+  text-align: center !important;
   font-weight: 600;
 }
 
 .points {
+  text-align: center !important;
+  font-weight: 600;
   color: #D32F2F;
 }
 
