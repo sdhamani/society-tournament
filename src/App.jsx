@@ -3,6 +3,7 @@ import { useState } from 'react'
 import './App.css'
 import Header from './components/Header'
 import Hero from './components/Hero'
+import LiveStream from './components/LiveStream'
 import FixturesWithAdmin from './components/FixturesWithAdmin'
 import Rules from './components/Rules'
 import Footer from './components/Footer'
@@ -15,6 +16,7 @@ function HomePage() {
   return (
     <>
       <Hero />
+      <LiveStream />
       <FixturesWithAdmin />
       <Rules />
     </>
