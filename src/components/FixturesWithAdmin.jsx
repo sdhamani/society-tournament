@@ -190,19 +190,19 @@ export default function FixturesWithAdmin() {
             </thead>
             <tbody>
               {filteredMatches.map((fixture) => (
-                <tr key={fixture.id} className={fixture.group_name === 'Ceremony' ? 'ceremony' : ''}>
+                <tr
+                  key={fixture.id}
+                  className={fixture.group_name === 'Ceremony' ? 'ceremony' : ''}
+                  onClick={() => isAdmin && fixture.group_name !== 'Ceremony' && openScoreModal(fixture)}
+                  style={isAdmin && fixture.group_name !== 'Ceremony' ? { cursor: 'pointer' } : {}}
+                >
                   <td className="time" title={fixture.match_time}>{getStartTime(fixture.match_time)}</td>
                   <td className="team">{fixture.team_a}</td>
                   <td className="team">{fixture.team_b}</td>
                   {isAdmin && (
                     <td className="action">
                       {fixture.group_name !== 'Ceremony' && (
-                        <button
-                          className="score-btn"
-                          onClick={() => openScoreModal(fixture)}
-                        >
-                          Score
-                        </button>
+                        <span style={{ fontSize: '1.2rem' }}>📝</span>
                       )}
                     </td>
                   )}
