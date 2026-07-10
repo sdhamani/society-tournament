@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { getMatches, updateMatchScore, updateStandings } from '../lib/supabaseClient'
+import { getMatches, updateMatchScore, recalculateAllStandings } from '../lib/supabaseClient'
 import Loader from './Loader'
 import '../styles/FixturesWithAdmin.css'
 
@@ -72,14 +72,8 @@ export default function FixturesWithAdmin() {
         winner
       })
 
-      if (winner) {
-        const winnerTeam = winner === 'Team A' ? scoreModal.team_a : scoreModal.team_b
-        // Split team name and update standings for each player
-        const players = winnerTeam.split(' + ').map(p => p.trim())
-        for (const player of players) {
-          await updateStandings(scoreModal.group_name, player, 2, 1, 1)
-        }
-      }
+      // Recalculate all standings from scratch
+      await recalculateAllStandings()
 
       setScoreModal(null)
       fetchMatches()

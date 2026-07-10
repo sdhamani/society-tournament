@@ -9,16 +9,38 @@ if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
 
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 
-// Fetch all matches
+// Fetch all matches with scores
 export async function getMatches(day) {
   try {
     const { data, error } = await supabase
       .from('matches')
-      .select('*')
+      .select(`
+        *,
+        scores (
+          set1_team_a,
+          set1_team_b,
+          set2_team_a,
+          set2_team_b,
+          set3_team_a,
+          set3_team_b,
+          winner
+        )
+      `)
       .order('match_time', { ascending: true })
 
     if (error) throw error
-    return data || []
+
+    // Flatten the scores data
+    return (data || []).map(match => ({
+      ...match,
+      set1_team_a: match.scores?.[0]?.set1_team_a || null,
+      set1_team_b: match.scores?.[0]?.set1_team_b || null,
+      set2_team_a: match.scores?.[0]?.set2_team_a || null,
+      set2_team_b: match.scores?.[0]?.set2_team_b || null,
+      set3_team_a: match.scores?.[0]?.set3_team_a || null,
+      set3_team_b: match.scores?.[0]?.set3_team_b || null,
+      winner: match.scores?.[0]?.winner || null
+    }))
   } catch (error) {
     console.error('Error fetching matches:', error)
     return []
@@ -114,5 +136,73 @@ export async function getPlayers() {
   } catch (error) {
     console.error('Error fetching players:', error)
     return []
+  }
+}
+
+// Recalculate all standings from scratch
+export async function recalculateAllStandings() {
+  try {
+    // Get all matches with scores
+    const { data: matches, error: matchError } = await supabase
+      .from('matches')
+      .select(`
+        *,
+        scores (
+          set1_team_a,
+          set1_team_b,
+          set2_team_a,
+          set2_team_b,
+          set3_team_a,
+          set3_team_b,
+          winner
+        )
+      `)
+
+    if (matchError) throw matchError
+
+    // Clear all standings
+    await supabase.from('standings').delete().gt('id', 0)
+
+    // Recalculate standings
+    const standingsMap = {}
+
+    matches.forEach(match => {
+      const score = match.scores?.[0]
+      if (!score || !score.winner) return
+
+      const winnerTeam = score.winner === 'Team A' ? match.team_a : match.team_b
+      const players = winnerTeam.split(' + ').map(p => p.trim())
+
+      players.forEach(player => {
+        const key = `${match.group_name}|${player}`
+        if (!standingsMap[key]) {
+          standingsMap[key] = {
+            group_name: match.group_name,
+            player_name: player,
+            points: 0,
+            wins: 0,
+            matches_played: 0
+          }
+        }
+        standingsMap[key].points += 2
+        standingsMap[key].wins += 1
+        standingsMap[key].matches_played += 1
+      })
+    })
+
+    // Insert recalculated standings
+    const standingsToInsert = Object.values(standingsMap)
+    if (standingsToInsert.length > 0) {
+      const { error: insertError } = await supabase
+        .from('standings')
+        .insert(standingsToInsert)
+
+      if (insertError) throw insertError
+    }
+
+    return true
+  } catch (error) {
+    console.error('Error recalculating standings:', error)
+    return false
   }
 }
