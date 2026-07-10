@@ -80,7 +80,6 @@ export async function updateMatchScore(matchId, scoreData) {
       .select()
 
     if (error) throw error
-    console.log('Score saved:', data)
     return data
   } catch (error) {
     console.error('Error updating score:', error)
@@ -88,17 +87,69 @@ export async function updateMatchScore(matchId, scoreData) {
   }
 }
 
-// Get standings for a group
+// Calculate standings on-the-fly from matches and scores
 export async function getStandings(groupName) {
   try {
-    const { data, error } = await supabase
-      .from('standings')
-      .select('*')
+    // Fetch all matches in the group with their scores
+    const { data: matches, error } = await supabase
+      .from('matches')
+      .select(`
+        *,
+        scores (
+          set1_team_a,
+          set1_team_b,
+          set2_team_a,
+          set2_team_b,
+          set3_team_a,
+          set3_team_b,
+          winner
+        )
+      `)
       .eq('group_name', groupName)
-      .order('points', { ascending: false })
 
     if (error) throw error
-    return data || []
+
+    // Calculate standings from matches and scores
+    const standingsMap = {}
+
+    matches.forEach(match => {
+      const score = match.scores?.[0]
+      if (!score) return
+
+      // Count all players who participated
+      const teamAPlayers = match.team_a.split(' + ').map(p => p.trim())
+      const teamBPlayers = match.team_b.split(' + ').map(p => p.trim())
+      const allPlayers = [...teamAPlayers, ...teamBPlayers]
+
+      allPlayers.forEach(player => {
+        if (!standingsMap[player]) {
+          standingsMap[player] = {
+            player_name: player,
+            points: 0,
+            wins: 0,
+            matches_played: 0
+          }
+        }
+        standingsMap[player].matches_played += 1
+      })
+
+      // Award points only to winners
+      if (score.winner) {
+        const winnerTeam = score.winner === 'Team A' ? match.team_a : match.team_b
+        const winners = winnerTeam.split(' + ').map(p => p.trim())
+
+        winners.forEach(player => {
+          standingsMap[player].points += 2
+          standingsMap[player].wins += 1
+        })
+      }
+    })
+
+    // Convert to array and sort by points
+    const standings = Object.values(standingsMap)
+    standings.sort((a, b) => (b.points || 0) - (a.points || 0))
+
+    return standings
   } catch (error) {
     console.error('Error fetching standings:', error)
     return []
@@ -143,93 +194,3 @@ export async function getPlayers() {
   }
 }
 
-// Recalculate all standings from scratch
-export async function recalculateAllStandings() {
-  try {
-    console.log('Starting standings recalculation...')
-
-    // Get all matches with scores
-    const { data: matches, error: matchError } = await supabase
-      .from('matches')
-      .select(`
-        *,
-        scores (
-          set1_team_a,
-          set1_team_b,
-          set2_team_a,
-          set2_team_b,
-          set3_team_a,
-          set3_team_b,
-          winner
-        )
-      `)
-
-    if (matchError) throw matchError
-    console.log('Fetched matches:', matches?.length)
-
-    // Clear all standings
-    const { error: deleteError } = await supabase.from('standings').delete().neq('id', -1)
-    if (deleteError) throw deleteError
-    console.log('Cleared standings')
-
-    // Recalculate standings
-    const standingsMap = {}
-
-    matches.forEach(match => {
-      const score = match.scores?.[0]
-      if (!score) return
-
-      // Count all players who participated in this match
-      const teamAPlayers = match.team_a.split(' + ').map(p => p.trim())
-      const teamBPlayers = match.team_b.split(' + ').map(p => p.trim())
-      const allPlayers = [...teamAPlayers, ...teamBPlayers]
-
-      allPlayers.forEach(player => {
-        const key = `${match.group_name}|${player}`
-        if (!standingsMap[key]) {
-          standingsMap[key] = {
-            group_name: match.group_name,
-            player_name: player,
-            points: 0,
-            wins: 0,
-            matches_played: 0
-          }
-        }
-        standingsMap[key].matches_played += 1
-      })
-
-      // Award points only to winners
-      if (score.winner) {
-        const winnerTeam = score.winner === 'Team A' ? match.team_a : match.team_b
-        const winners = winnerTeam.split(' + ').map(p => p.trim())
-
-        winners.forEach(player => {
-          const key = `${match.group_name}|${player}`
-          standingsMap[key].points += 2
-          standingsMap[key].wins += 1
-        })
-      }
-    })
-
-    // Insert recalculated standings
-    const standingsToInsert = Object.values(standingsMap)
-    console.log('Standings to insert:', standingsToInsert.length, standingsToInsert)
-
-    if (standingsToInsert.length > 0) {
-      const { error: insertError } = await supabase
-        .from('standings')
-        .insert(standingsToInsert)
-
-      if (insertError) {
-        console.error('Insert error:', insertError)
-        throw insertError
-      }
-      console.log('Standings inserted successfully')
-    }
-
-    return true
-  } catch (error) {
-    console.error('Error recalculating standings:', error)
-    return false
-  }
-}

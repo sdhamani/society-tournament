@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { getMatches, updateMatchScore, recalculateAllStandings } from '../lib/supabaseClient'
+import { getMatches, updateMatchScore } from '../lib/supabaseClient'
 import Loader from './Loader'
 import '../styles/FixturesWithAdmin.css'
 
@@ -73,9 +73,6 @@ export default function FixturesWithAdmin() {
         set3_team_b: scores.set3_b || null,
         winner
       })
-
-      // Recalculate all standings from scratch
-      await recalculateAllStandings()
 
       setScoreModal(null)
       fetchMatches()
