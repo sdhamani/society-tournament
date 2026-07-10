@@ -36,38 +36,67 @@ body {
 
 /* Header */
 .header {
-  background: linear-gradient(135deg, var(--dark) 0%, var(--light-dark) 100%);
-  color: var(--white);
-  padding: 1rem 0;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
-.navbar {
+.header-top {
+  background: linear-gradient(135deg, var(--dark) 0%, var(--light-dark) 100%);
+  color: var(--white);
+  padding: 2.5rem 0;
+  border-bottom: 3px solid var(--primary-red);
+}
+
+.brand-section {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  justify-content: center;
 }
 
-.logo {
-  font-size: 1.8rem;
+.brand-text {
+  text-align: center;
+}
+
+.brand-name {
+  font-size: 2.8rem;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
   background: linear-gradient(135deg, var(--gold), #FFA500);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.brand-tagline {
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #e0e0e0;
+  margin: 0;
+}
+
+.header-nav {
+  background: var(--dark);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 2rem;
+  gap: 0;
+  justify-content: center;
+}
+
+.nav-links li {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-links li:last-child {
+  border-right: none;
 }
 
 .nav-links a {
@@ -75,47 +104,77 @@ body {
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s;
+  display: block;
+  padding: 1.2rem 2rem;
   position: relative;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
 }
 
-.nav-links a::after {
+.nav-links a::before {
   content: '';
   position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -5px;
+  top: 0;
   left: 0;
-  background: var(--gold);
-  transition: width 0.3s;
+  right: 0;
+  height: 3px;
+  background: var(--primary-red);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.nav-links a:hover::after {
-  width: 100%;
+.nav-links a:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.nav-links a:hover {
+  background: rgba(211, 47, 47, 0.1);
 }
 
 @media (max-width: 768px) {
-  .nav-links {
-    gap: 1rem;
+  .header-top {
+    padding: 1.8rem 0;
+  }
+
+  .brand-name {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+
+  .brand-tagline {
     font-size: 0.9rem;
   }
-  .logo {
-    font-size: 1.4rem;
+
+  .nav-links {
+    gap: 0;
+  }
+
+  .nav-links a {
+    padding: 1rem 1.2rem;
+    font-size: 0.85rem;
+  }
+
+  .nav-links li {
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
   }
 }
 
 /* Hero Section */
 .hero-mini {
-  background: linear-gradient(135deg, var(--dark) 0%, var(--primary-red) 100%);
+  background: linear-gradient(135deg, #2C2C2C 0%, #1A1A1A 100%);
   color: var(--white);
-  padding: 1.5rem 2rem;
+  padding: 2rem;
   text-align: center;
 }
 
 .date-info {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: 1px;
   color: var(--gold);
+  margin: 0;
 }
 
 @media (max-width: 768px) {
