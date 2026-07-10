@@ -47,7 +47,7 @@ export default function InitializeDatabase({ onInitialized }) {
       { match_number: 'SAT-003', match_time: '8:30-8:50', group_name: 'Kids G1', team_a: 'Anubhav + Sanav', team_b: 'Amogh + Nythik', status: 'scheduled' },
       { match_number: 'SAT-004', match_time: '8:50-9:10', group_name: 'Kids G2', team_a: 'Tanush + Joe', team_b: 'Yuvaan + Abhiram', status: 'scheduled' },
       { match_number: 'SAT-005', match_time: '9:10-9:30', group_name: 'Kids G1', team_a: 'Anubhav + Avyukt', team_b: 'Yakshit + Bodhan', status: 'scheduled' },
-      { match_number: 'SAT-006', match_time: '9:30-10:10', group_name: 'Ceremony', team_a: 'Opening Ceremony', team_b: 'Flag Hoisting Area + Tea', status: 'scheduled' },
+      { match_number: 'SAT-006', match_time: '9:30-10:10', group_name: 'Ceremony', team_a: 'Opening Ceremony', team_b: 'Opening Ceremony', status: 'scheduled' },
       { match_number: 'SAT-007', match_time: '10:10-10:30', group_name: 'Men G1', team_a: 'Divyam + Sanjeev', team_b: 'Srikant + Rohit', status: 'scheduled' },
       { match_number: 'SAT-008', match_time: '10:30-10:50', group_name: 'Women G1', team_a: 'Poornima + Animisha', team_b: 'Sayantini + Maya', status: 'scheduled' },
       { match_number: 'SAT-009', match_time: '10:50-11:10', group_name: 'Men G1', team_a: 'Avinish + Rohit', team_b: 'Srikant + Sagar', status: 'scheduled' },
