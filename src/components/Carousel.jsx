@@ -44,12 +44,6 @@ export default function Carousel() {
           ))}
         </div>
 
-        <button className="carousel-btn prev" onClick={prevSlide}>
-          ❮
-        </button>
-        <button className="carousel-btn next" onClick={nextSlide}>
-          ❯
-        </button>
       </div>
 
       <div className="carousel-dots">

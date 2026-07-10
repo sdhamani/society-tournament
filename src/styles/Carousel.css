@@ -39,34 +39,6 @@
   object-fit: cover;
 }
 
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 215, 0, 0.9);
-  border: none;
-  color: #1a1a1a;
-  font-size: 2rem;
-  padding: 1rem 1.5rem;
-  cursor: pointer;
-  z-index: 10;
-  transition: all 0.3s;
-  font-weight: bold;
-  border-radius: 4px;
-}
-
-.carousel-btn:hover {
-  background: #ffd700;
-  transform: translateY(-50%) scale(1.1);
-}
-
-.carousel-btn.prev {
-  left: 20px;
-}
-
-.carousel-btn.next {
-  right: 20px;
-}
 
 .carousel-dots {
   display: flex;
