@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 
 export default function Header() {
   const [searchParams] = useSearchParams()
-  const adminParam = searchParams.get('admin') ? `?admin=${searchParams.get('admin')}` : ''
+  const adminParam = searchParams.get('admin') === 'sagar' ? `?admin=sagar` : ''
 
   const handleNavClick = (e, sectionId) => {
     if (adminParam) {

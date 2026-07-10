@@ -11,7 +11,7 @@ export default function FixturesWithAdmin() {
   const [scores, setScores] = useState({ set1_a: '', set1_b: '', set2_a: '', set2_b: '', set3_a: '', set3_b: '' })
   const [loading, setLoading] = useState(false)
 
-  const isAdmin = searchParams.get('admin') === 'tournament2026'
+  const isAdmin = searchParams.get('admin') === 'sagar'
 
   useEffect(() => {
     fetchMatches()
