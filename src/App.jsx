@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { useState } from 'react'
 import './App.css'
 import Header from './components/Header'
 import Hero from './components/Hero'
@@ -9,21 +10,25 @@ import Rules from './components/Rules'
 import Footer from './components/Footer'
 import ScoreEntry from './components/ScoreEntry'
 
+function HomePage() {
+  return (
+    <>
+      <Hero />
+      <Groups />
+      <Members />
+      <Fixtures />
+      <Rules />
+    </>
+  )
+}
+
 function App() {
   return (
     <Router>
       <div className="app">
         <Header />
         <Routes>
-          <Route path="/" element={
-            <>
-              <Hero />
-              <Groups />
-              <Members />
-              <Fixtures />
-              <Rules />
-            </>
-          } />
+          <Route path="/" element={<HomePage />} />
           <Route path="/scores" element={<ScoreEntry />} />
         </Routes>
         <Footer />
