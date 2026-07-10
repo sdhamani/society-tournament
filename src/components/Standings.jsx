@@ -1,32 +1,89 @@
-import { useState, useEffect } from 'react'
-import { getStandings } from '../lib/supabaseClient'
+import { useState, useEffect, useMemo } from 'react'
+import { supabase } from '../lib/supabaseClient'
 import Loader from './Loader'
 import '../styles/Standings.css'
 
 export default function Standings() {
   const [selectedGroup, setSelectedGroup] = useState('Kids G1')
-  const [standings, setStandings] = useState([])
+  const [allStandings, setAllStandings] = useState({})
   const [loading, setLoading] = useState(false)
 
   const groups = ['Kids G1', 'Kids G2', 'Women G1', 'Women G2', 'Men G1', 'Men G2', 'Seniors']
 
+  // Fetch all data once on component mount
   useEffect(() => {
-    fetchStandings()
-  }, [selectedGroup])
+    fetchAllStandings()
+  }, [])
 
-  const fetchStandings = async () => {
+  const fetchAllStandings = async () => {
     setLoading(true)
-    const data = await getStandings(selectedGroup)
+    try {
+      // Fetch all matches with scores once
+      const { data: matches } = await supabase
+        .from('matches')
+        .select(`
+          *,
+          scores (
+            set1_team_a,
+            set1_team_b,
+            set2_team_a,
+            set2_team_b,
+            set3_team_a,
+            set3_team_b,
+            winner
+          )
+        `)
 
-    // Filter out combined player names (old format), keep only individual players
-    const filteredData = data.filter(row => !row.player_name?.includes(' + '))
+      // Calculate standings for all groups
+      const standingsByGroup = {}
 
-    // Sort by points descending
-    filteredData.sort((a, b) => (b.points || 0) - (a.points || 0))
+      groups.forEach(group => {
+        const standingsMap = {}
 
-    setStandings(filteredData)
-    setLoading(false)
+        matches
+          .filter(m => m.group_name === group)
+          .forEach(match => {
+            const score = match.scores?.[0]
+            if (!score) return
+
+            const teamAPlayers = match.team_a.split(' + ').map(p => p.trim())
+            const teamBPlayers = match.team_b.split(' + ').map(p => p.trim())
+            const allPlayers = [...teamAPlayers, ...teamBPlayers]
+
+            allPlayers.forEach(player => {
+              if (!standingsMap[player]) {
+                standingsMap[player] = { player_name: player, points: 0, wins: 0, matches_played: 0 }
+              }
+              standingsMap[player].matches_played += 1
+            })
+
+            if (score.winner) {
+              const winnerTeam = score.winner === 'Team A' ? match.team_a : match.team_b
+              const winners = winnerTeam.split(' + ').map(p => p.trim())
+              winners.forEach(player => {
+                standingsMap[player].points += 2
+                standingsMap[player].wins += 1
+              })
+            }
+          })
+
+        const standings = Object.values(standingsMap)
+        standings.sort((a, b) => (b.points || 0) - (a.points || 0))
+        standingsByGroup[group] = standings
+      })
+
+      setAllStandings(standingsByGroup)
+    } catch (error) {
+      console.error('Error fetching standings:', error)
+    } finally {
+      setLoading(false)
+    }
   }
+
+  // Get current group standings
+  const standings = useMemo(() => {
+    return allStandings[selectedGroup] || []
+  }, [selectedGroup, allStandings])
 
   return (
     <section className="standings">
