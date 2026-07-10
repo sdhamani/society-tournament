@@ -67,9 +67,16 @@ export async function getMatchScore(matchId) {
 // Update match score
 export async function updateMatchScore(matchId, scoreData) {
   try {
+    // First delete any old scores for this match
+    await supabase
+      .from('scores')
+      .delete()
+      .eq('match_id', matchId)
+
+    // Then insert the new score
     const { data, error } = await supabase
       .from('scores')
-      .upsert({
+      .insert({
         match_id: matchId,
         ...scoreData,
         updated_at: new Date()
