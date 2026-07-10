@@ -16,7 +16,28 @@ export default function Standings() {
   const fetchStandings = async () => {
     setLoading(true)
     const data = await getStandings(selectedGroup)
-    setStandings(data)
+
+    // Split team names into individual players
+    const expandedData = []
+    data.forEach(row => {
+      if (row.player_name && row.player_name.includes(' + ')) {
+        // Split team name into individual players
+        const players = row.player_name.split(' + ').map(p => p.trim())
+        players.forEach(player => {
+          expandedData.push({
+            ...row,
+            player_name: player
+          })
+        })
+      } else {
+        expandedData.push(row)
+      }
+    })
+
+    // Sort by points descending
+    expandedData.sort((a, b) => (b.points || 0) - (a.points || 0))
+
+    setStandings(expandedData)
     setLoading(false)
   }
 
