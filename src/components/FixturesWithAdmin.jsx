@@ -182,10 +182,10 @@ export default function FixturesWithAdmin() {
           <table>
             <thead>
               <tr>
-                <th style={{ width: '15%' }}>Time</th>
-                <th style={{ width: '35%' }}>Team A</th>
-                <th style={{ width: '35%' }}>Team B</th>
-                {isAdmin && <th style={{ width: '15%' }}>Action</th>}
+                <th style={{ width: '12%' }}>Time</th>
+                <th style={{ width: '36%' }}>Team A</th>
+                <th style={{ width: '36%' }}>Team B</th>
+                {isAdmin && <th style={{ width: '16%' }}>Action</th>}
               </tr>
             </thead>
             <tbody>
