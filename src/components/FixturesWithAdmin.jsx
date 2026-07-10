@@ -127,8 +127,20 @@ export default function FixturesWithAdmin() {
     const time = timeRange.split('-')[0]
     const [hours, minutes] = time.split(':')
     const hour = parseInt(hours)
-    const ampm = hour >= 12 ? 'PM' : 'AM'
-    const displayHour = hour % 12 || 12
+
+    // Times 1-5 without leading zero are PM (afternoon), 7-11 are AM (morning), 12 is PM
+    let ampm = 'AM'
+    let displayHour = hour
+
+    if (hour >= 12) {
+      ampm = 'PM'
+      displayHour = hour === 12 ? 12 : hour - 12
+    } else if (hour >= 1 && hour <= 5) {
+      // Single digit afternoon times (1:10, 4:30, etc. are PM)
+      ampm = 'PM'
+      displayHour = hour
+    }
+
     return `${displayHour}:${minutes} ${ampm}`
   }
 
