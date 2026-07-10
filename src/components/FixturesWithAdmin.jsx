@@ -76,17 +76,15 @@ export default function FixturesWithAdmin() {
   }
 
   const getFilteredMatches = () => {
-    let filtered = matches
-
-    // If searching, show all matches; otherwise, filter by day
-    if (!searchQuery.trim()) {
-      if (selectedDay === 'saturday') {
-        filtered = filtered.filter(m => m.match_number?.startsWith('SAT'))
-      } else {
-        filtered = filtered.filter(m => m.match_number?.startsWith('SUN'))
-      }
+    let filtered
+    if (selectedDay === 'saturday') {
+      filtered = matches.filter(m => m.match_number?.startsWith('SAT'))
     } else {
-      // When searching, show matches from both days that match
+      filtered = matches.filter(m => m.match_number?.startsWith('SUN'))
+    }
+
+    // Apply search filter if query exists
+    if (searchQuery.trim()) {
       filtered = filtered.filter(m =>
         m.team_a?.toLowerCase().includes(searchQuery.toLowerCase()) ||
         m.team_b?.toLowerCase().includes(searchQuery.toLowerCase())
