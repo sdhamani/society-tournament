@@ -6,8 +6,49 @@
   display: flex;
   gap: 1.5rem;
   justify-content: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   flex-wrap: wrap;
+}
+
+.search-box {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  padding: 0.8rem 1.2rem;
+  border: 2px solid #D32F2F;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  width: 100%;
+  max-width: 300px;
+  font-family: inherit;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #D32F2F;
+  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+}
+
+.search-btn {
+  padding: 0.8rem 1.6rem;
+  background: linear-gradient(135deg, #D32F2F, #E53935);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+}
+
+.search-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
 }
 
 .day-btn {

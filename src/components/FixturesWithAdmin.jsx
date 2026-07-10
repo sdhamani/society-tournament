@@ -10,6 +10,7 @@ export default function FixturesWithAdmin() {
   const [scoreModal, setScoreModal] = useState(null)
   const [scores, setScores] = useState({ set1_a: '', set1_b: '', set2_a: '', set2_b: '', set3_a: '', set3_b: '' })
   const [loading, setLoading] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
 
   const isAdmin = searchParams.get('admin') === 'sagar'
 
@@ -81,6 +82,15 @@ export default function FixturesWithAdmin() {
     } else {
       filtered = matches.filter(m => m.match_number?.startsWith('SUN'))
     }
+
+    // Apply search filter if query exists
+    if (searchQuery.trim()) {
+      filtered = filtered.filter(m =>
+        m.team_a?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        m.team_b?.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    }
+
     return filtered.sort((a, b) => {
       const numA = parseInt(a.match_number?.split('-')[1] || 0)
       const numB = parseInt(b.match_number?.split('-')[1] || 0)
@@ -108,6 +118,17 @@ export default function FixturesWithAdmin() {
           >
             Sunday, July 12
           </button>
+        </div>
+
+        <div className="search-box">
+          <input
+            type="text"
+            placeholder="Find your matches"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="search-input"
+          />
+          <button className="search-btn">Search</button>
         </div>
 
         <div className="fixtures-table">
