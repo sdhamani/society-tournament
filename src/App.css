@@ -76,7 +76,25 @@ body {
   font-weight: 400;
   letter-spacing: 1px;
   color: #e0e0e0;
+  margin: 0 0 1rem 0;
+}
+
+.brand-date {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--gold);
   margin: 0;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+  }
 }
 
 .header-nav {
@@ -145,6 +163,11 @@ body {
 
   .brand-tagline {
     font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .brand-date {
+    font-size: 1rem;
   }
 
   .nav-links {
@@ -195,6 +218,10 @@ body {
 /* Sections */
 section {
   padding: 5rem 2rem;
+}
+
+#home {
+  padding: 0;
 }
 
 section h2 {

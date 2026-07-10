@@ -7,6 +7,7 @@ export default function Header() {
             <div className="brand-text">
               <h1 className="brand-name">Windsor Troika</h1>
               <p className="brand-tagline">Mid-Term Badminton Tournament 2026</p>
+              <p className="brand-date">🏸 July 11-12, 2026 🏸</p>
             </div>
           </div>
         </div>
