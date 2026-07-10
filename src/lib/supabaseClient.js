@@ -198,3 +198,35 @@ export async function getPlayers() {
   }
 }
 
+// Get stream URL from settings
+export async function getStreamUrl() {
+  try {
+    const { data, error } = await supabase
+      .from('settings')
+      .select('stream_url')
+      .single()
+
+    if (error) throw error
+    return data?.stream_url || ''
+  } catch (error) {
+    console.error('Error fetching stream URL:', error)
+    return ''
+  }
+}
+
+// Update stream URL in settings
+export async function updateStreamUrl(streamUrl) {
+  try {
+    const { data, error } = await supabase
+      .from('settings')
+      .upsert({ id: 1, stream_url: streamUrl })
+      .select()
+
+    if (error) throw error
+    return data
+  } catch (error) {
+    console.error('Error updating stream URL:', error)
+    return null
+  }
+}
+

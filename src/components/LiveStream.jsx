@@ -1,13 +1,31 @@
+import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { getStreamUrl } from '../lib/supabaseClient'
 
 export default function LiveStream() {
   const [searchParams] = useSearchParams()
+  const [streamUrl, setStreamUrl] = useState('')
+  const [loading, setLoading] = useState(true)
+
   const isAdmin = searchParams.get('admin') === 'sagar'
 
-  // Twitch embed URL
-  const streamUrl = 'https://player.twitch.tv/?channel=mrdhamani&parent=windsor-troika.vercel.app&parent=localhost'
+  useEffect(() => {
+    if (isAdmin) {
+      fetchStreamUrl()
+    }
+  }, [isAdmin])
 
-  if (!isAdmin) {
+  const fetchStreamUrl = async () => {
+    const url = await getStreamUrl()
+    setStreamUrl(url)
+    setLoading(false)
+  }
+
+  if (!isAdmin || loading) {
+    return null
+  }
+
+  if (!streamUrl) {
     return null
   }
 

@@ -8,6 +8,7 @@ import FixturesWithAdmin from './components/FixturesWithAdmin'
 import Rules from './components/Rules'
 import Footer from './components/Footer'
 import Standings from './components/Standings'
+import AdminSettings from './components/AdminSettings'
 import InitializeDatabase from './components/InitializeDatabase'
 import ScrollToElement from './components/ScrollToElement'
 import WelcomePopup from './components/WelcomePopup'
@@ -36,6 +37,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/standings" element={<Standings />} />
+          <Route path="/admin/settings" element={<AdminSettings />} />
         </Routes>
         <Footer />
       </div>

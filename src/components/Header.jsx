@@ -40,6 +40,9 @@ export default function Header() {
             <li><a href={`/${adminParam}#fixtures`} onClick={() => handleSectionClick('fixtures')}>Schedule</a></li>
             <li><a href={`/${adminParam}#rules`} onClick={() => handleSectionClick('rules')}>Rules</a></li>
             <li><a href={`/standings${adminParam}`}>Standings</a></li>
+            {searchParams.get('admin') === 'sagar' && (
+              <li><a href={`/admin/settings${adminParam}`} style={{ color: '#FFD700', fontWeight: 'bold' }}>⚙️ Settings</a></li>
+            )}
           </ul>
         </div>
       </nav>
