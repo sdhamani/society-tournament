@@ -20,7 +20,8 @@ export default function Footer() {
         </div>
         <div className="footer-bottom">
           <p>&copy; 2026 Windsor Troika. All rights reserved by Decor Aesthetic.</p>
-          <p className="disclaimer">⚠️ This website is for information purposes only and will not be taken as a source of truth. Final decisions still lie with the organizer.</p>
+          <p className="disclaimer">📋 Live scores may take time to update. Please contact the organizers for any questions or concerns regarding match results.</p>
+          <p className="disclaimer">ℹ️ This website is for informational purposes only and should not be relied upon as the sole source of information. For final decisions, please consult with the tournament organizers.</p>
         </div>
       </div>
     </footer>
