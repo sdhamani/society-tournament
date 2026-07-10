@@ -10,6 +10,7 @@ import Rules from './components/Rules'
 import Footer from './components/Footer'
 import Standings from './components/Standings'
 import InitializeDatabase from './components/InitializeDatabase'
+import ScrollToElement from './components/ScrollToElement'
 
 function HomePage() {
   return (
@@ -28,6 +29,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToElement />
       <div className="app">
         <InitializeDatabase onInitialized={() => setInitialized(true)} />
         <Header />
