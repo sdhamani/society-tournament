@@ -1,7 +1,7 @@
 export default function LiveStream() {
-  // You can update this with your YouTube or Twitch embed URL
-  const streamUrl = '' // Leave empty if no stream yet
-  const isStreamActive = streamUrl.trim().length > 0
+  // Twitch embed URL
+  const streamUrl = 'https://player.twitch.tv/?channel=mrdhamani&parent=windsor-troika.vercel.app&parent=localhost'
+  const isStreamActive = true
 
   return (
     <section id="live-stream" className="live-stream">
