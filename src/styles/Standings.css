@@ -164,6 +164,7 @@
 
   .group-selector {
     gap: 0.8rem;
+    margin-bottom: 2rem;
   }
 
   .group-btn {
@@ -171,16 +172,130 @@
     font-size: 0.85rem;
   }
 
-  .standings-table {
-    font-size: 0.9rem;
+  .standings-container {
+    padding: 1.5rem;
+    border-radius: 10px;
   }
 
-  .standings-table th,
+  .standings-table {
+    font-size: 0.85rem;
+  }
+
+  .standings-table th {
+    padding: 0.8rem 0.5rem;
+    font-size: 0.85rem;
+  }
+
   .standings-table td {
-    padding: 0.8rem 0.6rem;
+    padding: 0.7rem 0.5rem;
+  }
+
+  .rank {
+    width: 50px;
+    font-size: 0.95rem;
   }
 
   .player {
-    min-width: 150px;
+    min-width: 130px;
+    font-size: 0.85rem;
+  }
+
+  .info-box {
+    margin-top: 1.5rem;
+    padding: 1rem;
+  }
+
+  .info-box p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .standings {
+    padding: 1.5rem 0.8rem;
+  }
+
+  .group-selector {
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .group-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .standings-container {
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .standings-table {
+    font-size: 0.75rem;
+    min-width: 500px;
+  }
+
+  .standings-table th {
+    padding: 0.6rem 0.4rem;
+    font-size: 0.7rem;
+  }
+
+  .standings-table td {
+    padding: 0.6rem 0.4rem;
+  }
+
+  .standings-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .rank {
+    width: 40px;
+    font-size: 0.85rem;
+  }
+
+  .player {
+    min-width: 100px;
+    font-size: 0.75rem;
+    word-break: break-word;
+  }
+
+  .wins,
+  .matches,
+  .points {
+    font-size: 0.75rem;
+    padding: 0.3rem;
+  }
+
+  .loading {
+    padding: 2rem;
+    font-size: 1rem;
+  }
+
+  .no-data {
+    padding: 2rem;
+  }
+
+  .no-data p {
+    font-size: 0.95rem;
+  }
+
+  .hint {
+    font-size: 0.85rem;
+  }
+
+  .info-box {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    border-left-width: 3px;
+  }
+
+  .info-box p {
+    font-size: 0.8rem;
+    margin: 0.3rem 0;
   }
 }

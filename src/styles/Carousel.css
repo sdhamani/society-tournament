@@ -70,25 +70,66 @@
 }
 
 @media (max-width: 768px) {
-  .carousel-btn {
-    padding: 0.8rem 1rem;
-    font-size: 1.5rem;
+  .carousel-container {
+    margin: 2rem auto;
+    padding: 0 15px;
   }
 
-  .carousel-btn.prev {
-    left: 10px;
+  .carousel-wrapper {
+    border-radius: 10px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
   }
 
-  .carousel-btn.next {
-    right: 10px;
+  .carousel-slides {
+    aspect-ratio: 16 / 9;
   }
 
   .carousel-dots {
-    gap: 0.7rem;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
   }
 
   .dot {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
+    border-width: 1.5px;
+  }
+
+  .dot.active {
+    transform: scale(1.25);
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-container {
+    margin: 1.5rem auto;
+    padding: 0 10px;
+  }
+
+  .carousel-wrapper {
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  .carousel-slides {
+    aspect-ratio: 4 / 3;
+  }
+
+  .carousel-dots {
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-width: 1px;
+  }
+
+  .dot.active {
+    transform: scale(1.2);
+    box-shadow: 0 0 6px rgba(211, 47, 47, 0.4);
   }
 }
