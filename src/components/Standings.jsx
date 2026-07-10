@@ -18,10 +18,13 @@ export default function Standings() {
     setLoading(true)
     const data = await getStandings(selectedGroup)
 
-    // Sort by points descending
-    data.sort((a, b) => (b.points || 0) - (a.points || 0))
+    // Filter out combined player names (old format), keep only individual players
+    const filteredData = data.filter(row => !row.player_name?.includes(' + '))
 
-    setStandings(data)
+    // Sort by points descending
+    filteredData.sort((a, b) => (b.points || 0) - (a.points || 0))
+
+    setStandings(filteredData)
     setLoading(false)
   }
 
