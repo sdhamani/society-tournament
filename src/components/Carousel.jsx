@@ -5,10 +5,10 @@ export default function Carousel() {
   const [currentSlide, setCurrentSlide] = useState(0)
 
   const slides = [
-    { id: 1, image: '/src/assets/img1.jpg', title: 'Winners Celebration' },
-    { id: 2, image: '/src/assets/img2.jpg', title: 'Team Group Photo' },
-    { id: 3, image: '/src/assets/img3.jpg', title: 'Medal Winners' },
-    { id: 4, image: '/src/assets/img4.jpg', title: 'Champions' }
+    { id: 1, image: '/img1.jpg', title: 'Winners Celebration' },
+    { id: 2, image: '/img2.jpg', title: 'Team Group Photo' },
+    { id: 3, image: '/img3.jpg', title: 'Medal Winners' },
+    { id: 4, image: '/img4.jpg', title: 'Champions' }
   ]
 
   useEffect(() => {
