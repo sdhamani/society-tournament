@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { getMatches, updateMatchScore, updateStandings } from '../lib/supabaseClient'
+import Loader from './Loader'
 import '../styles/FixturesWithAdmin.css'
 
 export default function FixturesWithAdmin() {
@@ -9,9 +10,10 @@ export default function FixturesWithAdmin() {
   const [matches, setMatches] = useState([])
   const [scoreModal, setScoreModal] = useState(null)
   const [scores, setScores] = useState({ set1_a: '', set1_b: '', set2_a: '', set2_b: '', set3_a: '', set3_b: '' })
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedGroup, setSelectedGroup] = useState('all')
+  const [submitting, setSubmitting] = useState(false)
 
   const isAdmin = searchParams.get('admin') === 'sagar'
 
@@ -22,8 +24,10 @@ export default function FixturesWithAdmin() {
   }, [])
 
   const fetchMatches = async () => {
+    setLoading(true)
     const data = await getMatches()
     setMatches(data)
+    setLoading(false)
   }
 
   const openScoreModal = (match) => {
@@ -38,7 +42,7 @@ export default function FixturesWithAdmin() {
 
   const handleSubmitScore = async (e) => {
     e.preventDefault()
-    setLoading(true)
+    setSubmitting(true)
 
     // Determine winner
     let teamAWins = 0, teamBWins = 0
@@ -74,7 +78,7 @@ export default function FixturesWithAdmin() {
     } catch (error) {
       alert('Error: ' + error.message)
     } finally {
-      setLoading(false)
+      setSubmitting(false)
     }
   }
 
@@ -171,6 +175,9 @@ export default function FixturesWithAdmin() {
           ))}
         </div>
 
+        {loading ? (
+          <Loader message="🏸 Fetching match schedule for you..." />
+        ) : (
         <div className="fixtures-table">
           <table>
             <thead>
@@ -204,6 +211,7 @@ export default function FixturesWithAdmin() {
             </tbody>
           </table>
         </div>
+        )}
       </div>
 
       {/* Score Modal */}
@@ -251,8 +259,8 @@ export default function FixturesWithAdmin() {
                 ))}
               </div>
 
-              <button type="submit" className="submit-btn" disabled={loading}>
-                {loading ? 'Saving...' : '✅ Save Score'}
+              <button type="submit" className="submit-btn" disabled={submitting}>
+                {submitting ? '⏳ Saving...' : '✅ Save Score'}
               </button>
             </form>
           </div>

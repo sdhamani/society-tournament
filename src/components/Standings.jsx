@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getStandings } from '../lib/supabaseClient'
+import Loader from './Loader'
 import '../styles/Standings.css'
 
 export default function Standings() {
@@ -60,7 +61,7 @@ export default function Standings() {
 
         <div className="standings-container">
           {loading ? (
-            <div className="loading">Loading standings...</div>
+            <Loader message="🏸 Fetching the standings for you..." />
           ) : standings.length === 0 ? (
             <div className="no-data">
               <p>📊 Scores will be updated as soon as matches are completed</p>
