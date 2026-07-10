@@ -10,7 +10,7 @@ export default function Fixtures() {
       { time: '8:30-8:50', group: 'Kids G1', teamA: 'Anubhav + Sanav', teamB: 'Amogh + Nythik' },
       { time: '8:50-9:10', group: 'Kids G2', teamA: 'Tanush + Joe', teamB: 'Yuvaan + Abhiram' },
       { time: '9:10-9:30', group: 'Kids G1', teamA: 'Anubhav + Tanmay', teamB: 'Yakshit + Bodhan' },
-      { time: '9:30-10:10', group: 'CEREMONY', teamA: 'Opening Ceremony @ Flag Hoisting Area + Snacks', teamB: '' },
+      { time: '9:30-10:10', group: 'CEREMONY', teamA: 'Opening Ceremony @ Flag Hoisting Area', teamB: '' },
       { time: '10:10-10:30', group: 'Men G1', teamA: 'Divyam + Sanjeev', teamB: 'Srikant + Rohit' },
       { time: '10:30-10:50', group: 'Women G1', teamA: 'Poornima + Animisha', teamB: 'Sayantini + Maya' },
       { time: '10:50-11:10', group: 'Men G1', teamA: 'Avinish + Rohit', teamB: 'Srikant + Sagar' },

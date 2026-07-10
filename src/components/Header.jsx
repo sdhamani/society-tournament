@@ -3,7 +3,7 @@ export default function Header() {
     <header className="header">
       <div className="container">
         <nav className="navbar">
-          <h1 className="logo">Society Tournament</h1>
+          <h1 className="logo">Windsor Troika Badminton Tournament</h1>
           <ul className="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#groups">Groups</a></li>
