@@ -70,21 +70,6 @@ export default function FixturesWithAdmin() {
     }
   }
 
-  const timeToMinutes = (timeStr) => {
-    if (!timeStr) return 0
-    const timePart = timeStr.split('-')[0].trim()
-    if (timePart.includes('PM')) {
-      const [hours, mins] = timePart.replace('PM', '').trim().split(':').map(Number)
-      return (hours === 12 ? 12 : hours + 12) * 60 + (mins || 0)
-    }
-    if (timePart.includes('AM')) {
-      const [hours, mins] = timePart.replace('AM', '').trim().split(':').map(Number)
-      return (hours === 12 ? 0 : hours) * 60 + (mins || 0)
-    }
-    const [hours, mins] = timePart.split(':').map(Number)
-    return hours * 60 + (mins || 0)
-  }
-
   const getFilteredMatches = () => {
     let filtered
     if (selectedDay === 'saturday') {
@@ -92,7 +77,11 @@ export default function FixturesWithAdmin() {
     } else {
       filtered = matches.filter(m => m.match_number?.startsWith('SUN'))
     }
-    return filtered.sort((a, b) => timeToMinutes(a.match_time) - timeToMinutes(b.match_time))
+    return filtered.sort((a, b) => {
+      const numA = parseInt(a.match_number?.split('-')[1] || 0)
+      const numB = parseInt(b.match_number?.split('-')[1] || 0)
+      return numA - numB
+    })
   }
 
   const filteredMatches = getFilteredMatches()
