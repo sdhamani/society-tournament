@@ -67,23 +67,20 @@ export async function getMatchScore(matchId) {
 // Update match score
 export async function updateMatchScore(matchId, scoreData) {
   try {
-    // First delete any old scores for this match
-    await supabase
-      .from('scores')
-      .delete()
-      .eq('match_id', matchId)
-
-    // Then insert the new score
     const { data, error } = await supabase
       .from('scores')
-      .insert({
-        match_id: matchId,
-        ...scoreData,
-        updated_at: new Date()
-      })
+      .upsert(
+        {
+          match_id: matchId,
+          ...scoreData,
+          updated_at: new Date()
+        },
+        { onConflict: 'match_id' }
+      )
       .select()
 
     if (error) throw error
+    console.log('Score saved:', data)
     return data
   } catch (error) {
     console.error('Error updating score:', error)
@@ -149,6 +146,8 @@ export async function getPlayers() {
 // Recalculate all standings from scratch
 export async function recalculateAllStandings() {
   try {
+    console.log('Starting standings recalculation...')
+
     // Get all matches with scores
     const { data: matches, error: matchError } = await supabase
       .from('matches')
@@ -166,10 +165,12 @@ export async function recalculateAllStandings() {
       `)
 
     if (matchError) throw matchError
+    console.log('Fetched matches:', matches?.length)
 
     // Clear all standings
     const { error: deleteError } = await supabase.from('standings').delete().neq('id', -1)
     if (deleteError) throw deleteError
+    console.log('Cleared standings')
 
     // Recalculate standings
     const standingsMap = {}
@@ -212,12 +213,18 @@ export async function recalculateAllStandings() {
 
     // Insert recalculated standings
     const standingsToInsert = Object.values(standingsMap)
+    console.log('Standings to insert:', standingsToInsert.length, standingsToInsert)
+
     if (standingsToInsert.length > 0) {
       const { error: insertError } = await supabase
         .from('standings')
         .insert(standingsToInsert)
 
-      if (insertError) throw insertError
+      if (insertError) {
+        console.error('Insert error:', insertError)
+        throw insertError
+      }
+      console.log('Standings inserted successfully')
     }
 
     return true
