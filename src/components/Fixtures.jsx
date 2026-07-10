@@ -63,7 +63,6 @@ export default function Fixtures() {
       { time: '5:00 PM', group: 'FINAL', teamA: 'Final Seniors: Rank 1 + 4', teamB: 'Rank 2 + 3' },
       { time: '5:20 PM', group: 'FINAL', teamA: 'Final Kids G2: Rank 1 + 4', teamB: 'Rank 2 + 3' },
       { time: '5:40 PM', group: 'FINAL', teamA: 'Final Kids G1: Rank 1 + 4', teamB: 'Rank 2 + 3' },
-      { time: '6:00 PM', group: 'FINAL', teamA: 'Final Women G2: Rank 1 + 4', teamB: 'Rank 2 + 3' },
       { time: '6:20 PM', group: 'FINAL', teamA: 'Final Men G2: (A)R1 + (I)R2', teamB: '(A)R2 + (I)R1' },
       { time: '6:40 PM', group: 'FINAL', teamA: 'Final Women G1: (A)R1 + (I)R2', teamB: '(A)R2 + (I)R1' },
       { time: '7:00 PM', group: 'FINAL', teamA: 'Final Men G1: (A)R1 + (I)R2', teamB: '(A)R2 + (I)R1' },
