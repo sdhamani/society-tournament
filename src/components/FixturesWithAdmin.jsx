@@ -32,7 +32,15 @@ export default function FixturesWithAdmin() {
 
   const openScoreModal = (match) => {
     setScoreModal(match)
-    setScores({ set1_a: '', set1_b: '', set2_a: '', set2_b: '', set3_a: '', set3_b: '' })
+    // Pre-populate with existing scores if they exist
+    setScores({
+      set1_a: match.set1_team_a || '',
+      set1_b: match.set1_team_b || '',
+      set2_a: match.set2_team_a || '',
+      set2_b: match.set2_team_b || '',
+      set3_a: match.set3_team_a || '',
+      set3_b: match.set3_team_b || ''
+    })
   }
 
   const handleScoreChange = (e) => {
