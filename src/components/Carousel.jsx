@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import '../styles/Carousel.css'
 
 export default function Carousel() {
-  const [currentSlide, setCurrentSlide] = useState(0)
+  const [currentSlide, setCurrentSlide] = useState(1)
 
   const slides = [
     { id: 1, image: '/img1.jpg', title: 'Winners Celebration' },
@@ -14,7 +14,7 @@ export default function Carousel() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
-    }, 4000)
+    }, 6000)
     return () => clearInterval(timer)
   }, [])
 
