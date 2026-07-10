@@ -100,11 +100,11 @@ tbody tr.ceremony {
   color: var(--dark);
   font-weight: 600;
   background-color: rgba(211, 47, 47, 0.15) !important;
-  text-align: center;
-  vertical-align: middle;
-  display: inline-block;
-  width: 100%;
-  line-height: 1.5;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 50px !important;
+  padding: 0 !important;
 }
 
 .team {
