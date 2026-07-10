@@ -615,6 +615,18 @@ tbody tr.special {
   font-size: 0.95rem;
 }
 
+.footer-section a {
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.footer-section a:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
 .footer-bottom {
   text-align: center;
   padding-top: 2.5rem;
@@ -625,6 +637,18 @@ tbody tr.special {
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.footer-bottom p:first-child {
+  margin-bottom: 1rem;
+}
+
+.disclaimer {
+  color: #FFD700;
+  font-size: 0.8rem;
+  font-style: italic;
+  line-height: 1.6;
+  padding: 0.8rem 0;
 }
 
 /* Responsive */

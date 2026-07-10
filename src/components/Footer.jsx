@@ -9,8 +9,8 @@ export default function Footer() {
           </div>
           <div className="footer-section">
             <h4>Contact</h4>
-            <p>Email: info@societytournament.com</p>
-            <p>Phone: +91 XXXXXXXXXX</p>
+            <p>Tilak: <a href="tel:+919379651074">9379651074</a></p>
+            <p>Sagar: <a href="tel:+919403727501">9403727501</a></p>
           </div>
           <div className="footer-section">
             <h4>Location</h4>
@@ -20,6 +20,7 @@ export default function Footer() {
         </div>
         <div className="footer-bottom">
           <p>&copy; 2026 Windsor Troika. All rights reserved by Decor Aesthetic.</p>
+          <p className="disclaimer">⚠️ This website is for information purposes only and will not be taken as a source of truth. Final decisions still lie with the organizer.</p>
         </div>
       </div>
     </footer>
