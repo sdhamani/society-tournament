@@ -58,7 +58,11 @@ export default function FixturesWithAdmin() {
 
       if (winner) {
         const winnerTeam = winner === 'Team A' ? scoreModal.team_a : scoreModal.team_b
-        await updateStandings(scoreModal.group_name, winnerTeam, 2, 1, 1)
+        // Split team name and update standings for each player
+        const players = winnerTeam.split(' + ').map(p => p.trim())
+        for (const player of players) {
+          await updateStandings(scoreModal.group_name, player, 2, 1, 1)
+        }
       }
 
       setScoreModal(null)
