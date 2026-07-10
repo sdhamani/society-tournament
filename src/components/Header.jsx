@@ -19,11 +19,12 @@ export default function Header() {
       <nav className="header-nav">
         <div className="container">
           <ul className="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#groups">Groups</a></li>
-            <li><a href="#members">Members</a></li>
-            <li><a href="#fixtures">Schedule</a></li>
-            <li><a href="#rules">Rules</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/#groups">Groups</a></li>
+            <li><a href="/#members">Members</a></li>
+            <li><a href="/#fixtures">Schedule</a></li>
+            <li><a href="/#rules">Rules</a></li>
+            <li><a href="/scores">Scores</a></li>
           </ul>
         </div>
       </nav>
