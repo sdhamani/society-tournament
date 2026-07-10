@@ -151,9 +151,9 @@ tbody tr.ceremony {
 .modal {
   background: white;
   border-radius: 12px;
-  padding: 2rem;
-  max-width: 500px;
-  width: 90%;
+  padding: 2.5rem;
+  max-width: 700px;
+  width: 95%;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
@@ -187,60 +187,65 @@ tbody tr.ceremony {
 
 .match-info {
   text-align: center;
-  margin-bottom: 2rem;
-  padding: 1rem;
-  background: #f9f9f9;
-  border-radius: 8px;
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #f0f8ff, #ffffff);
+  border-radius: 10px;
+  border-left: 4px solid var(--primary-red);
 }
 
 .match-info div {
   font-weight: 600;
   color: var(--dark);
-  margin: 0.3rem 0;
-  font-size: 0.95rem;
+  margin: 0.4rem 0;
+  font-size: 1rem;
   word-break: break-word;
 }
 
 .vs {
   color: var(--primary-red);
   font-weight: 700;
-  margin: 0.5rem 0;
+  margin: 0.8rem 0;
+  font-size: 1.1rem;
 }
 
 .sets {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .set {
-  background: #f9f9f9;
-  padding: 1rem;
-  border-radius: 8px;
+  background: linear-gradient(135deg, #f9f9f9, #ffffff);
+  padding: 1.5rem;
+  border-radius: 10px;
   text-align: center;
+  border: 2px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .set h4 {
   color: var(--dark);
-  margin-bottom: 1rem;
-  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
 .score-inputs {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
 }
 
 .score-inputs input {
-  width: 50px;
-  padding: 0.7rem;
+  width: 75px;
+  padding: 0.9rem;
   border: 2px solid #e0e0e0;
-  border-radius: 6px;
+  border-radius: 8px;
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: 700;
   transition: all 0.3s;
 }
@@ -248,34 +253,36 @@ tbody tr.ceremony {
 .score-inputs input:focus {
   outline: none;
   border-color: var(--primary-red);
-  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+  box-shadow: 0 0 0 4px rgba(211, 47, 47, 0.15);
 }
 
 .score-inputs span {
   font-weight: 700;
-  color: #666;
+  color: var(--dark);
+  font-size: 1.5rem;
 }
 
 .submit-btn {
   width: 100%;
-  padding: 1rem;
+  padding: 1.2rem;
   background: linear-gradient(135deg, var(--primary-red), #E53935);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.1rem;
   cursor: pointer;
   transition: all 0.3s;
+  letter-spacing: 0.5px;
 }
 
 .submit-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(211, 47, 47, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(211, 47, 47, 0.4);
 }
 
 .submit-btn:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
