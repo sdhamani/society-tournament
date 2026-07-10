@@ -8,7 +8,8 @@ export default function Carousel() {
     { id: 1, image: '/img1.jpg', title: 'Winners Celebration' },
     { id: 2, image: '/img2.jpg', title: 'Team Group Photo' },
     { id: 3, image: '/img3.jpg', title: 'Medal Winners' },
-    { id: 4, image: '/img4.jpg', title: 'Champions' }
+    { id: 4, image: '/img4.jpg', title: 'Champions' },
+    { id: 5, image: '/img5.jpg', title: 'Team Victory' }
   ]
 
   useEffect(() => {
