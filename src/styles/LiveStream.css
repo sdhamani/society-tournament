@@ -26,11 +26,13 @@
 .no-stream {
   padding: 4rem 2rem;
   text-align: center;
-  background: #f9f9f9;
+  background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+  border: 2px dashed #D32F2F;
+  border-radius: 12px;
 }
 
 .no-stream-icon {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 1rem;
   animation: bounce 0.8s infinite;
 }
@@ -44,17 +46,22 @@
   }
 }
 
-.no-stream p {
-  margin: 0.5rem 0;
-  color: #666;
-  font-size: 1.1rem;
-  font-weight: 500;
+.no-stream h3 {
+  color: #D32F2F;
+  font-size: 1.8rem;
+  margin: 1rem 0 0.5rem 0;
+  font-weight: 700;
 }
 
-.no-stream-hint {
-  color: #D32F2F;
-  font-size: 1rem;
-  font-weight: 600;
+.no-stream p {
+  margin: 1rem 0 0 0;
+  color: #333;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .stream-info {

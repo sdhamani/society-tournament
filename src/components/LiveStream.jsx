@@ -39,16 +39,11 @@ export default function LiveStream() {
             </div>
           ) : (
             <div className="no-stream">
-              <div className="no-stream-icon">📹</div>
-              <p>Live streaming will start once we begin the tournament</p>
-              <p className="no-stream-hint">Stay tuned! July 11-12, 2026</p>
+              <div className="no-stream-icon">🎥</div>
+              <h3>Live Stream Coming Soon</h3>
+              <p>We'll be streaming the tournament live during the matches. Stay tuned and check back during July 11-12, 2026!</p>
             </div>
           )}
-        </div>
-
-        <div className="stream-info">
-          <p>🎯 Watch the tournament live from the comfort of your home!</p>
-          <p>🏸 Follow along with the schedule and standings in real-time</p>
         </div>
       </div>
     </section>

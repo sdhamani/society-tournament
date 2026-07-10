@@ -17,8 +17,8 @@ function HomePage() {
   return (
     <>
       <Hero />
-      <LiveStream />
       <FixturesWithAdmin />
+      <LiveStream />
       <Rules />
     </>
   )
