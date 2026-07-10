@@ -11,8 +11,11 @@ export default function FixturesWithAdmin() {
   const [scores, setScores] = useState({ set1_a: '', set1_b: '', set2_a: '', set2_b: '', set3_a: '', set3_b: '' })
   const [loading, setLoading] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
+  const [selectedGroup, setSelectedGroup] = useState('all')
 
   const isAdmin = searchParams.get('admin') === 'sagar'
+
+  const groups = ['Kids G1', 'Kids G2', 'Women G1', 'Women G2', 'Men G1', 'Men G2', 'Seniors', 'Ceremony']
 
   useEffect(() => {
     fetchMatches()
@@ -83,6 +86,11 @@ export default function FixturesWithAdmin() {
       filtered = matches.filter(m => m.match_number?.startsWith('SUN'))
     }
 
+    // Apply group filter if not "all"
+    if (selectedGroup !== 'all') {
+      filtered = filtered.filter(m => m.group_name === selectedGroup)
+    }
+
     // Apply search filter if query exists
     if (searchQuery.trim()) {
       filtered = filtered.filter(m =>
@@ -143,6 +151,24 @@ export default function FixturesWithAdmin() {
             className="search-input"
           />
           <button className="search-btn">Search</button>
+        </div>
+
+        <div className="group-filter">
+          <button
+            className={`filter-btn ${selectedGroup === 'all' ? 'active' : ''}`}
+            onClick={() => setSelectedGroup('all')}
+          >
+            All Groups
+          </button>
+          {groups.map(group => (
+            <button
+              key={group}
+              className={`filter-btn ${selectedGroup === group ? 'active' : ''}`}
+              onClick={() => setSelectedGroup(group)}
+            >
+              {group}
+            </button>
+          ))}
         </div>
 
         <div className="fixtures-table">

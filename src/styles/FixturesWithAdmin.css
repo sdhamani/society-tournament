@@ -51,6 +51,38 @@
   box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
 }
 
+.group-filter {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 0.6rem 1.2rem;
+  border: 2px solid #D32F2F;
+  background: white;
+  color: #D32F2F;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+}
+
+.filter-btn:hover {
+  background: #D32F2F;
+  color: white;
+  box-shadow: 0 2px 8px rgba(211, 47, 47, 0.2);
+}
+
+.filter-btn.active {
+  background: #D32F2F;
+  color: white;
+  box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
+}
+
 .day-btn {
   padding: 1rem 2.5rem;
   border: 2px solid var(--primary-red);
