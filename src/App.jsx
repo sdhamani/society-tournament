@@ -3,8 +3,6 @@ import { useState } from 'react'
 import './App.css'
 import Header from './components/Header'
 import Hero from './components/Hero'
-import Groups from './components/Groups'
-import Members from './components/Members'
 import FixturesWithAdmin from './components/FixturesWithAdmin'
 import Rules from './components/Rules'
 import Footer from './components/Footer'
@@ -16,8 +14,6 @@ function HomePage() {
   return (
     <>
       <Hero />
-      <Groups />
-      <Members />
       <FixturesWithAdmin />
       <Rules />
     </>
