@@ -50,19 +50,15 @@ export default function Standings() {
               <thead>
                 <tr>
                   <th>Rank</th>
-                  <th>Player/Team</th>
-                  <th>Wins</th>
-                  <th>Matches</th>
+                  <th>Player</th>
                   <th>Points</th>
                 </tr>
               </thead>
               <tbody>
                 {standings.map((row, idx) => (
-                  <tr key={row.id} className={`rank-${idx + 1}`}>
+                  <tr key={row.id}>
                     <td className="rank">#{idx + 1}</td>
                     <td className="player">{row.player_name}</td>
-                    <td className="wins">{row.wins || 0}</td>
-                    <td className="matches">{row.matches_played || 0}</td>
                     <td className="points">{row.points}</td>
                   </tr>
                 ))}

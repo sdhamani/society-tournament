@@ -84,11 +84,9 @@
   white-space: nowrap;
 }
 
-.standings-table th:nth-child(1) { width: 10%; }
-.standings-table th:nth-child(2) { width: 45%; }
-.standings-table th:nth-child(3) { width: 15%; }
-.standings-table th:nth-child(4) { width: 15%; }
-.standings-table th:nth-child(5) { width: 15%; }
+.standings-table th:nth-child(1) { width: 15%; }
+.standings-table th:nth-child(2) { width: 60%; }
+.standings-table th:nth-child(3) { width: 25%; }
 
 .standings-table td {
   padding: 0.6rem 0.8rem;
@@ -96,9 +94,7 @@
   font-size: 0.9rem;
 }
 
-.standings-table td:nth-child(3),
-.standings-table td:nth-child(4),
-.standings-table td:nth-child(5) {
+.standings-table td:nth-child(3) {
   text-align: center;
 }
 
@@ -109,28 +105,17 @@
 .rank {
   font-weight: 600;
   color: #D32F2F;
-  text-align: left;
 }
 
 .player {
-  font-weight: 600;
-  text-align: left;
-}
-
-.wins {
-  text-align: center !important;
-  font-weight: 600;
-}
-
-.matches {
-  text-align: center !important;
   font-weight: 600;
 }
 
 .points {
   text-align: center !important;
-  font-weight: 600;
+  font-weight: 700;
   color: #D32F2F;
+  font-size: 1rem;
 }
 
 .info-box {
