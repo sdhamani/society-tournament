@@ -24,7 +24,7 @@ export default function Header() {
             <li><a href="/#members">Members</a></li>
             <li><a href="/#fixtures">Schedule</a></li>
             <li><a href="/#rules">Rules</a></li>
-            <li><a href="/scores">Scores</a></li>
+            <li><a href="/standings">Standings</a></li>
           </ul>
         </div>
       </nav>
