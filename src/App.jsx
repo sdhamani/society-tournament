@@ -9,6 +9,7 @@ import Footer from './components/Footer'
 import Standings from './components/Standings'
 import InitializeDatabase from './components/InitializeDatabase'
 import ScrollToElement from './components/ScrollToElement'
+import WelcomePopup from './components/WelcomePopup'
 
 function HomePage() {
   return (
@@ -26,6 +27,7 @@ function App() {
   return (
     <Router>
       <ScrollToElement />
+      <WelcomePopup />
       <div className="app">
         <InitializeDatabase onInitialized={() => setInitialized(true)} />
         <Header />
