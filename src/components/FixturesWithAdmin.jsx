@@ -114,18 +114,16 @@ export default function FixturesWithAdmin() {
           <table>
             <thead>
               <tr>
-                <th style={{ width: '10%' }}>Match #</th>
-                <th style={{ width: '12%' }}>Time</th>
-                <th style={{ width: '12%' }}>Group</th>
-                <th style={{ width: '23%' }}>Team A</th>
-                <th style={{ width: '23%' }}>Team B</th>
-                {isAdmin && <th style={{ width: '20%' }}>Action</th>}
+                <th style={{ width: '15%' }}>Time</th>
+                <th style={{ width: '15%' }}>Group</th>
+                <th style={{ width: '28%' }}>Team A</th>
+                <th style={{ width: '28%' }}>Team B</th>
+                {isAdmin && <th style={{ width: '14%' }}>Action</th>}
               </tr>
             </thead>
             <tbody>
               {filteredMatches.map((fixture) => (
                 <tr key={fixture.id} className={fixture.group_name === 'Ceremony' ? 'ceremony' : ''}>
-                  <td className="match-num">{fixture.match_number}</td>
                   <td className="time">{fixture.match_time}</td>
                   <td className="group">{fixture.group_name}</td>
                   <td className="team">{fixture.team_a}</td>
