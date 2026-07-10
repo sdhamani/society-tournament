@@ -68,7 +68,6 @@
 .standings-table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed;
 }
 
 .standings-table thead {
@@ -77,20 +76,18 @@
 }
 
 .standings-table th {
-  padding: 0.5rem 0.8rem;
+  padding: 0.4rem 0.8rem;
   text-align: left;
   font-weight: 600;
   font-size: 0.85rem;
-  height: 40px;
-  vertical-align: middle;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .standings-table td {
   padding: 0.6rem 0.8rem;
   border-bottom: 1px solid #e0e0e0;
   font-size: 0.9rem;
-  height: 40px;
-  vertical-align: middle;
 }
 
 .standings-table tbody tr:hover {
