@@ -24,17 +24,19 @@
 }
 
 .no-stream {
-  padding: 4rem 2rem;
+  padding: 5rem 3rem;
   text-align: center;
-  background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
-  border: 2px dashed #D32F2F;
-  border-radius: 12px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border: 3px solid #D32F2F;
 }
 
 .no-stream-icon {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
   animation: bounce 0.8s infinite;
+  display: inline-block;
 }
 
 @keyframes bounce {
@@ -48,20 +50,19 @@
 
 .no-stream h3 {
   color: #D32F2F;
-  font-size: 1.8rem;
-  margin: 1rem 0 0.5rem 0;
+  font-size: 2.2rem;
+  margin: 1rem 0 1rem 0;
   font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .no-stream p {
-  margin: 1rem 0 0 0;
-  color: #333;
-  font-size: 1.05rem;
+  color: #555;
+  font-size: 1.1rem;
   font-weight: 500;
-  line-height: 1.6;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 1.5rem auto 0;
 }
 
 .stream-info {
