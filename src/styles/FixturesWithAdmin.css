@@ -119,7 +119,7 @@
 table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed;
+  table-layout: auto;
 }
 
 thead {
@@ -128,19 +128,20 @@ thead {
 }
 
 th {
-  padding: 1.2rem;
+  padding: 1rem;
   text-align: left;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   letter-spacing: 0.5px;
   word-break: break-word;
 }
 
 td {
-  padding: 1rem 1.2rem;
+  padding: 0.8rem 1rem;
   border-bottom: 1px solid #e0e0e0;
   word-break: break-word;
   overflow-wrap: break-word;
+  font-size: 0.9rem;
 }
 
 tbody tr {
@@ -466,34 +467,59 @@ tbody tr.ceremony {
   }
 
   .day-selector {
-    gap: 0.6rem;
-    margin-bottom: 1.5rem;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
   }
 
   .day-btn {
+    padding: 0.6rem 0.9rem;
+    font-size: 0.75rem;
+    min-height: 36px;
+  }
+
+  .search-box {
+    margin-bottom: 1rem;
+  }
+
+  .search-input {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .search-btn {
     padding: 0.6rem 1rem;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+  }
+
+  .group-filter {
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .filter-btn {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.7rem;
+    min-height: 34px;
   }
 
   .fixtures-table {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    margin: 0 -0.8rem;
-    border-radius: 0;
+    border-radius: 8px;
+    overflow: visible;
   }
 
   table {
     font-size: 0.75rem;
-    min-width: 600px;
+    width: 100%;
   }
 
   th {
-    padding: 0.7rem 0.4rem;
-    font-size: 0.75rem;
+    padding: 0.6rem 0.5rem;
+    font-size: 0.7rem;
   }
 
   td {
-    padding: 0.6rem 0.4rem;
+    padding: 0.5rem 0.4rem;
+    font-size: 0.8rem;
   }
 
   .match-num {
