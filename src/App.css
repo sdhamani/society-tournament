@@ -673,6 +673,20 @@ tbody tr.special {
   }
 }
 
+@media (max-width: 640px) {
+  body {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 0 12px;
+  }
+
+  section {
+    padding: 2.5rem 0.8rem;
+  }
+}
+
 @media (max-width: 480px) {
   .header-top {
     padding: 0.8rem 0;
@@ -709,16 +723,17 @@ tbody tr.special {
   .nav-links li {
     flex: 1;
     text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
   }
 
   .nav-links a {
-    padding: 0.5rem 0.4rem;
+    padding: 0.6rem 0.3rem;
     font-size: 0.65rem;
     display: block;
   }
 
   section {
-    padding: 2rem 0.8rem;
+    padding: 1.8rem 0.8rem;
   }
 
   section h2 {
@@ -729,7 +744,7 @@ tbody tr.special {
 
   section h2::after {
     width: 60px;
-    height: 3px;
+    height: 2px;
   }
 
   .groups-grid {
@@ -739,10 +754,11 @@ tbody tr.special {
 
   .group-card {
     padding: 1.2rem;
+    border-left-width: 3px;
   }
 
   .group-card h3 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-bottom: 0.6rem;
   }
 
@@ -751,41 +767,73 @@ tbody tr.special {
   }
 
   .group-selector {
-    gap: 0.6rem;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
   }
 
   .group-btn {
-    padding: 0.5rem 1rem;
-    font-size: 0.75rem;
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+    min-height: 40px;
   }
 
   .members-grid {
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
     gap: 0.8rem;
   }
 
   .member-card {
     padding: 0.8rem 0.6rem;
     font-size: 0.75rem;
-    border-radius: 8px;
+    border-radius: 6px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .day-selector {
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
   }
 
   .day-btn {
-    padding: 0.5rem 0.8rem;
-    font-size: 0.75rem;
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+    min-height: 40px;
+  }
+
+  .search-box {
+    margin-bottom: 1.5rem;
+  }
+
+  .search-input {
+    max-width: 100%;
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .search-btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.8rem;
+    min-height: 40px;
+  }
+
+  table {
+    font-size: 0.8rem;
   }
 
   th, td {
-    padding: 0.5rem 0.3rem;
+    padding: 0.6rem 0.4rem;
   }
 
   .time {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
   }
 
   .rules-container {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.2rem;
   }
 
   .rules-section {
@@ -796,39 +844,39 @@ tbody tr.special {
   .rule-number {
     width: 35px;
     height: 35px;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
   }
 
   .rules-section h3 {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   .rule-items li {
     padding: 0.5rem 0;
     padding-left: 1.5rem;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 
   .footer {
-    padding: 2rem 1rem 1rem;
+    padding: 2rem 0.8rem 1rem;
   }
 
   .footer-content {
-    gap: 2rem;
+    gap: 1.5rem;
     grid-template-columns: 1fr;
   }
 
   .footer-section h4 {
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
   }
 
   .footer-section p {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 
   .footer-bottom {
-    font-size: 0.75rem;
-    padding-top: 1.5rem;
+    font-size: 0.7rem;
+    padding-top: 1.2rem;
   }
 }
