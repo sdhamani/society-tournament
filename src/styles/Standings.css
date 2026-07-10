@@ -1,7 +1,6 @@
 .standings {
-  background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+  background: #f5f5f5;
   padding: 4rem 2rem;
-  min-height: 100vh;
 }
 
 .group-selector {
@@ -27,31 +26,27 @@
 .group-btn:hover {
   background: #D32F2F;
   color: white;
-  transform: translateY(-2px);
 }
 
 .group-btn.active {
-  background: linear-gradient(135deg, #1A1A1A, #D32F2F);
+  background: #D32F2F;
   color: white;
-  border-color: #1A1A1A;
-  box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+  border-color: #D32F2F;
 }
 
 .standings-container {
   background: white;
-  border-radius: 15px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-  padding: 2.5rem;
-  max-width: 1000px;
+  padding: 2rem;
+  max-width: 800px;
   margin: 0 auto;
-  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .loading {
   text-align: center;
   padding: 3rem;
   color: #666;
-  font-size: 1.1rem;
 }
 
 .no-data {
@@ -61,13 +56,12 @@
 
 .no-data p {
   color: #666;
-  font-size: 1.1rem;
   margin-bottom: 0.5rem;
 }
 
 .hint {
   color: #999;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-style: italic;
 }
 
@@ -77,108 +71,60 @@
 }
 
 .standings-table thead {
-  background: linear-gradient(135deg, #1A1A1A, #2C2C2C);
+  background: #2C2C2C;
   color: white;
 }
 
 .standings-table th {
-  padding: 1rem 1rem;
+  padding: 0.8rem;
   text-align: left;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 0.9rem;
-  letter-spacing: 0.3px;
-  border-bottom: 2px solid #e0e0e0;
 }
 
 .standings-table td {
-  padding: 0.95rem 1rem;
-  border-bottom: 1px solid #f0f0f0;
-  font-size: 0.95rem;
-}
-
-.standings-table tbody tr {
-  transition: all 0.3s;
+  padding: 0.8rem;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 0.9rem;
 }
 
 .standings-table tbody tr:hover {
-  background: #f0f8ff;
-  box-shadow: inset 0 0 10px rgba(211, 47, 47, 0.05);
-}
-
-.standings-table .rank-1 {
-  background: #fffbf0;
-  border-left: 3px solid #FFD700;
-}
-
-.standings-table .rank-1 .rank {
-  color: #FFD700;
-  font-weight: 700;
-}
-
-.standings-table .rank-1 .points {
-  color: #FFD700;
-  font-weight: 700;
-}
-
-.standings-table .rank-2 {
   background: #f9f9f9;
-  border-left: 3px solid #C0C0C0;
-}
-
-.standings-table .rank-2 .rank {
-  color: #C0C0C0;
-}
-
-.standings-table .rank-3 {
-  background: #ffffff;
-  border-left: 3px solid #CD7F32;
-}
-
-.standings-table .rank-3 .rank {
-  color: #CD7F32;
 }
 
 .rank {
-  font-weight: 700;
+  font-weight: 600;
   color: #D32F2F;
-  width: 60px;
-  font-size: 0.95rem;
 }
 
 .player {
   font-weight: 600;
-  color: #1A1A1A;
-  min-width: 180px;
-  font-size: 0.95rem;
 }
 
 .wins,
 .matches,
 .points {
   text-align: center;
-  font-weight: 700;
-  font-size: 0.95rem;
+  font-weight: 600;
 }
 
 .points {
   color: #D32F2F;
-  font-weight: 700;
-  font-size: 1rem;
 }
 
 .info-box {
   margin-top: 2rem;
-  padding: 1.5rem;
+  padding: 1rem;
   background: #f0f8ff;
   border-left: 4px solid #D32F2F;
-  border-radius: 8px;
   text-align: center;
+  border-radius: 4px;
 }
 
 .info-box p {
   color: #333;
-  margin: 0.5rem 0;
-  font-size: 0.95rem;
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
 }
 
 @media (max-width: 768px) {
