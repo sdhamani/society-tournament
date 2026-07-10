@@ -414,6 +414,7 @@ section h2::after {
 table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 thead {
@@ -427,11 +428,30 @@ th {
   font-weight: 700;
   font-size: 0.95rem;
   letter-spacing: 0.5px;
+  word-break: break-word;
+}
+
+th:nth-child(1) {
+  width: 12%;
+}
+
+th:nth-child(2) {
+  width: 15%;
+}
+
+th:nth-child(3) {
+  width: 36.5%;
+}
+
+th:nth-child(4) {
+  width: 36.5%;
 }
 
 td {
   padding: 1rem 1.2rem;
   border-bottom: 1px solid #e0e0e0;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 tbody tr {
@@ -450,9 +470,7 @@ tbody tr.special {
 .time {
   font-weight: 700;
   color: var(--primary-red);
-  width: 100px;
   white-space: nowrap;
-  min-width: 100px;
 }
 
 .group {
