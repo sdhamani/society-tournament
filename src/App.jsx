@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { useState } from 'react'
 import './App.css'
 import Header from './components/Header'
 import Hero from './components/Hero'
@@ -8,6 +9,7 @@ import FixturesWithAdmin from './components/FixturesWithAdmin'
 import Rules from './components/Rules'
 import Footer from './components/Footer'
 import Standings from './components/Standings'
+import InitializeDatabase from './components/InitializeDatabase'
 
 function HomePage() {
   return (
@@ -22,9 +24,12 @@ function HomePage() {
 }
 
 function App() {
+  const [initialized, setInitialized] = useState(false)
+
   return (
     <Router>
       <div className="app">
+        <InitializeDatabase onInitialized={() => setInitialized(true)} />
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
