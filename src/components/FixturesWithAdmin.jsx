@@ -52,12 +52,14 @@ export default function FixturesWithAdmin() {
     e.preventDefault()
     setSubmitting(true)
 
-    // Determine winner
+    // Determine winner by checking all 3 sets
     let teamAWins = 0, teamBWins = 0
     if (scores.set1_a > scores.set1_b) teamAWins++
     if (scores.set1_b > scores.set1_a) teamBWins++
     if (scores.set2_a > scores.set2_b) teamAWins++
     if (scores.set2_b > scores.set2_a) teamBWins++
+    if (scores.set3_a > scores.set3_b) teamAWins++
+    if (scores.set3_b > scores.set3_a) teamBWins++
 
     const winner = teamAWins > teamBWins ? 'Team A' : teamBWins > teamAWins ? 'Team B' : null
 
