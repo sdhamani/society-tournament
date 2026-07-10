@@ -100,6 +100,15 @@ export default function FixturesWithAdmin() {
 
   const filteredMatches = getFilteredMatches()
 
+  const getShortTeamName = (teamName) => {
+    if (!teamName) return ''
+    const parts = teamName.split(' + ')
+    if (parts.length === 2) {
+      return `${parts[0].charAt(0)} + ${parts[1].charAt(0)}`
+    }
+    return teamName
+  }
+
   return (
     <section id="fixtures" className="fixtures">
       <div className="container">
@@ -135,11 +144,11 @@ export default function FixturesWithAdmin() {
           <table>
             <thead>
               <tr>
-                <th style={{ width: '15%' }}>Time</th>
-                <th style={{ width: '15%' }}>Group</th>
-                <th style={{ width: '28%' }}>Team A</th>
-                <th style={{ width: '28%' }}>Team B</th>
-                {isAdmin && <th style={{ width: '14%' }}>Action</th>}
+                <th style={{ width: '18%' }}>Time</th>
+                <th style={{ width: '18%' }}>Group</th>
+                <th style={{ width: '20%' }}>Team A</th>
+                <th style={{ width: '20%' }}>Team B</th>
+                {isAdmin && <th style={{ width: '24%' }}>Action</th>}
               </tr>
             </thead>
             <tbody>
@@ -147,8 +156,8 @@ export default function FixturesWithAdmin() {
                 <tr key={fixture.id} className={fixture.group_name === 'Ceremony' ? 'ceremony' : ''}>
                   <td className="time">{fixture.match_time}</td>
                   <td className="group">{fixture.group_name}</td>
-                  <td className="team">{fixture.team_a}</td>
-                  <td className="team">{fixture.team_b}</td>
+                  <td className="team" title={fixture.team_a}>{getShortTeamName(fixture.team_a)}</td>
+                  <td className="team" title={fixture.team_b}>{getShortTeamName(fixture.team_b)}</td>
                   {isAdmin && (
                     <td className="action">
                       {fixture.group_name !== 'Ceremony' && (
