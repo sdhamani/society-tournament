@@ -84,10 +84,22 @@
   white-space: nowrap;
 }
 
+.standings-table th:nth-child(1) { width: 10%; }
+.standings-table th:nth-child(2) { width: 45%; }
+.standings-table th:nth-child(3) { width: 15%; }
+.standings-table th:nth-child(4) { width: 15%; }
+.standings-table th:nth-child(5) { width: 15%; }
+
 .standings-table td {
   padding: 0.6rem 0.8rem;
   border-bottom: 1px solid #e0e0e0;
   font-size: 0.9rem;
+}
+
+.standings-table td:nth-child(3),
+.standings-table td:nth-child(4),
+.standings-table td:nth-child(5) {
+  text-align: center;
 }
 
 .standings-table tbody tr:hover {
