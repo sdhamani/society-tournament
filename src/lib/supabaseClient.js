@@ -168,12 +168,14 @@ export async function recalculateAllStandings() {
 
     matches.forEach(match => {
       const score = match.scores?.[0]
-      if (!score || !score.winner) return
+      if (!score) return
 
-      const winnerTeam = score.winner === 'Team A' ? match.team_a : match.team_b
-      const players = winnerTeam.split(' + ').map(p => p.trim())
+      // Count all players who participated in this match
+      const teamAPlayers = match.team_a.split(' + ').map(p => p.trim())
+      const teamBPlayers = match.team_b.split(' + ').map(p => p.trim())
+      const allPlayers = [...teamAPlayers, ...teamBPlayers]
 
-      players.forEach(player => {
+      allPlayers.forEach(player => {
         const key = `${match.group_name}|${player}`
         if (!standingsMap[key]) {
           standingsMap[key] = {
@@ -184,10 +186,20 @@ export async function recalculateAllStandings() {
             matches_played: 0
           }
         }
-        standingsMap[key].points += 2
-        standingsMap[key].wins += 1
         standingsMap[key].matches_played += 1
       })
+
+      // Award points only to winners
+      if (score.winner) {
+        const winnerTeam = score.winner === 'Team A' ? match.team_a : match.team_b
+        const winners = winnerTeam.split(' + ').map(p => p.trim())
+
+        winners.forEach(player => {
+          const key = `${match.group_name}|${player}`
+          standingsMap[key].points += 2
+          standingsMap[key].wins += 1
+        })
+      }
     })
 
     // Insert recalculated standings
