@@ -1,19 +1,13 @@
 import { useState, useEffect } from 'react'
-import { useSearchParams } from 'react-router-dom'
 import { getStreamUrl } from '../lib/supabaseClient'
 
 export default function LiveStream() {
-  const [searchParams] = useSearchParams()
   const [streamUrl, setStreamUrl] = useState('')
   const [loading, setLoading] = useState(true)
 
-  const isAdmin = searchParams.get('admin') === 'sagar'
-
   useEffect(() => {
-    if (isAdmin) {
-      fetchStreamUrl()
-    }
-  }, [isAdmin])
+    fetchStreamUrl()
+  }, [])
 
   const fetchStreamUrl = async () => {
     const url = await getStreamUrl()
@@ -21,11 +15,7 @@ export default function LiveStream() {
     setLoading(false)
   }
 
-  if (!isAdmin || loading) {
-    return null
-  }
-
-  if (!streamUrl) {
+  if (loading) {
     return null
   }
 
@@ -35,17 +25,25 @@ export default function LiveStream() {
         <h2>🎬 Live Stream</h2>
 
         <div className="stream-container">
-          <div className="stream-embed">
-            <iframe
-              width="100%"
-              height="600"
-              src={streamUrl}
-              title="Live Stream"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
+          {streamUrl ? (
+            <div className="stream-embed">
+              <iframe
+                width="100%"
+                height="600"
+                src={streamUrl}
+                title="Live Stream"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+          ) : (
+            <div className="no-stream">
+              <div className="no-stream-icon">📹</div>
+              <p>Live streaming will start once we begin the tournament</p>
+              <p className="no-stream-hint">Stay tuned! July 11-12, 2026</p>
+            </div>
+          )}
         </div>
 
         <div className="stream-info">
