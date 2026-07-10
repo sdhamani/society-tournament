@@ -112,7 +112,9 @@
 }
 
 .points {
-  text-align: center !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
   font-weight: 700;
   color: #D32F2F;
   font-size: 1rem;
