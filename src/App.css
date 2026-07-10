@@ -358,11 +358,7 @@ section h2::after {
 }
 
 .members-list h3 {
-  text-align: center;
-  color: var(--primary-red);
-  margin-bottom: 2rem;
-  font-size: 1.5rem;
-  font-weight: 700;
+  display: none;
 }
 
 .members-grid {
