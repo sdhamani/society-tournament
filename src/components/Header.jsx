@@ -36,8 +36,6 @@ export default function Header() {
         <div className="container">
           <ul className="nav-links">
             <li><a href={`/${adminParam}`}>Home</a></li>
-            <li><a href={`/${adminParam}#groups`} onClick={() => handleSectionClick('groups')}>Groups</a></li>
-            <li><a href={`/${adminParam}#members`} onClick={() => handleSectionClick('members')}>Members</a></li>
             <li><a href={`/${adminParam}#fixtures`} onClick={() => handleSectionClick('fixtures')}>Schedule</a></li>
             <li><a href={`/${adminParam}#rules`} onClick={() => handleSectionClick('rules')}>Rules</a></li>
             <li><a href={`/standings${adminParam}`}>Standings</a></li>
