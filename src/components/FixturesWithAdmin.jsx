@@ -116,10 +116,10 @@ export default function FixturesWithAdmin() {
               <tr>
                 <th style={{ width: '10%' }}>Match #</th>
                 <th style={{ width: '12%' }}>Time</th>
-                <th style={{ width: '15%' }}>Group</th>
-                <th style={{ width: '28%' }}>Team A</th>
-                <th style={{ width: '28%' }}>Team B</th>
-                {isAdmin && <th style={{ width: '7%' }}>Action</th>}
+                <th style={{ width: '12%' }}>Group</th>
+                <th style={{ width: '23%' }}>Team A</th>
+                <th style={{ width: '23%' }}>Team B</th>
+                {isAdmin && <th style={{ width: '20%' }}>Action</th>}
               </tr>
             </thead>
             <tbody>
