@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import '../styles/Carousel.css'
 
 export default function Carousel() {
-  const [currentSlide, setCurrentSlide] = useState(1)
+  const [currentSlide, setCurrentSlide] = useState(0)
 
   const slides = [
     { id: 2, image: '/img2.jpg', title: 'Team Group Photo' },
