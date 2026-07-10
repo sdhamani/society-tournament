@@ -161,7 +161,8 @@ export async function recalculateAllStandings() {
     if (matchError) throw matchError
 
     // Clear all standings
-    await supabase.from('standings').delete().gt('id', 0)
+    const { error: deleteError } = await supabase.from('standings').delete().neq('id', -1)
+    if (deleteError) throw deleteError
 
     // Recalculate standings
     const standingsMap = {}
