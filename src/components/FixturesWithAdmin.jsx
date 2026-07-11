@@ -128,34 +128,12 @@ export default function FixturesWithAdmin() {
     const [hours, minutes] = time.split(':')
     const hour = parseInt(hours)
 
-    // 7-11: AM only if it's early (no times before it), otherwise PM for evening
-    // Simplified: 7-11 with no leading zero = could be AM or PM
-    // Context: morning matches start at 7, afternoon ones end around 6:50, evening ones 7:50+
-    // Assume: if hour is 7-8, it's evening PM (since morning is also 7-11)
-    // Better logic: treat 7-8 as PM (evening), 9-11 as AM (morning)
-    // But that's wrong for morning...
-
-    // Actual fix: times displayed as 7-8 in evening context should be PM
-    // Since we can't track context per time, assume:
-    // - 1-6 = PM
-    // - 7-8 = PM (evening, because if morning it would be displayed with leading zero or context shows morning)
-    // - 9-11 = AM (morning)
-    // - 12+ = PM
-
-    let ampm = 'PM'
+    let ampm = 'AM'
     let displayHour = hour
 
-    if (hour >= 9 && hour <= 11) {
-      // Morning times: 9:10 AM, 10:30 AM, 11:50 AM
-      ampm = 'AM'
-      displayHour = hour
-    } else if (hour >= 12) {
-      // 12+ is PM (noon onwards)
+    if (hour >= 12) {
       ampm = 'PM'
       displayHour = hour === 12 ? 12 : hour - 12
-    } else {
-      // 1-8 is PM (afternoon/evening)
-      displayHour = hour
     }
 
     return `${displayHour}:${minutes} ${ampm}`
