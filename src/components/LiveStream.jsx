@@ -19,15 +19,19 @@ export default function LiveStream() {
     if (!url) return null
 
     // YouTube URL patterns
-    if (url.includes('youtube.com') || url.includes('youtu.be')) {
+    if (url.includes('youtube.com') || url.includes('youtu.be') || url.includes('studio.youtube.com')) {
       // Extract video ID from various YouTube URL formats
       let videoId
-      if (url.includes('youtube.com/live/')) {
+      if (url.includes('studio.youtube.com/video/')) {
+        videoId = url.split('studio.youtube.com/video/')[1]?.split('/')[0]
+      } else if (url.includes('youtube.com/live/')) {
         videoId = url.split('youtube.com/live/')[1]?.split('?')[0]
       } else if (url.includes('youtube.com/watch?v=')) {
         videoId = url.split('v=')[1]?.split('&')[0]
       } else if (url.includes('youtu.be/')) {
         videoId = url.split('youtu.be/')[1]?.split('?')[0]
+      } else if (url.includes('youtube.com/embed/')) {
+        videoId = url.split('youtube.com/embed/')[1]?.split('?')[0]
       }
       return videoId ? `https://www.youtube.com/embed/${videoId}` : url
     }
