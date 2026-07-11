@@ -132,21 +132,25 @@ export default function FixturesWithAdmin() {
     let displayHour = hour
 
     if (hour >= 7 && hour <= 11) {
-      let prevHour = null
-      if (index > 0 && matches[index - 1]) {
-        const prevTime = matches[index - 1].match_time?.split('-')[0]
-        if (prevTime) {
-          prevHour = parseInt(prevTime.split(':')[0])
+      let hasSeenAfternoon = false
+
+      // Check if ANY previous match was in afternoon (1-6 or >= 12)
+      if (index > 0) {
+        for (let i = 0; i < index; i++) {
+          const prevTime = matches[i].match_time?.split('-')[0]
+          if (prevTime) {
+            const prevHour = parseInt(prevTime.split(':')[0])
+            if (prevHour >= 12 || (prevHour >= 1 && prevHour <= 6)) {
+              hasSeenAfternoon = true
+              break
+            }
+          }
         }
       }
 
-      // 7-11 is PM only if we've passed into afternoon (prevHour >= 12 or prevHour 1-6)
-      // Otherwise 7-11 is morning AM
-      if (prevHour !== null && (prevHour >= 12 || (prevHour >= 1 && prevHour <= 6))) {
-        ampm = 'PM'
-      } else {
-        ampm = 'AM'
-      }
+      // 7-11 is PM if we've already seen afternoon times (1-6 or 12+)
+      // Otherwise it's morning AM
+      ampm = hasSeenAfternoon ? 'PM' : 'AM'
     }
 
     if (hour >= 12) {
