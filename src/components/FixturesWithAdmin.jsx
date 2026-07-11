@@ -140,9 +140,9 @@ export default function FixturesWithAdmin() {
         }
       }
 
-      // If previous time was afternoon/evening (>= 6), current 7-11 is evening PM
-      // Otherwise, 7-11 is morning AM
-      if (prevHour !== null && prevHour >= 6) {
+      // 7-11 is PM only if we've passed into afternoon (prevHour >= 12 or prevHour 1-6)
+      // Otherwise 7-11 is morning AM
+      if (prevHour !== null && (prevHour >= 12 || (prevHour >= 1 && prevHour <= 6))) {
         ampm = 'PM'
       } else {
         ampm = 'AM'
