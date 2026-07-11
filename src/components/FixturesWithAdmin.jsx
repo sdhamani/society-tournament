@@ -128,11 +128,14 @@ export default function FixturesWithAdmin() {
     const [hours, minutes] = time.split(':')
     const hour = parseInt(hours)
 
-    let ampm = 'AM'
+    let ampm = 'PM'
     let displayHour = hour
 
+    if (hour >= 7 && hour <= 11) {
+      ampm = 'AM'
+    }
+
     if (hour >= 12) {
-      ampm = 'PM'
       displayHour = hour === 12 ? 12 : hour - 12
     }
 
