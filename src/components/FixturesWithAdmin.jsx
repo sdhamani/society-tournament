@@ -122,7 +122,7 @@ export default function FixturesWithAdmin() {
     return teamName
   }
 
-  const getStartTime = (timeRange) => {
+  const getStartTime = (timeRange, index, matches) => {
     if (!timeRange) return ''
     const time = timeRange.split('-')[0]
     const [hours, minutes] = time.split(':')
@@ -132,7 +132,21 @@ export default function FixturesWithAdmin() {
     let displayHour = hour
 
     if (hour >= 7 && hour <= 11) {
-      ampm = 'AM'
+      let prevHour = null
+      if (index > 0 && matches[index - 1]) {
+        const prevTime = matches[index - 1].match_time?.split('-')[0]
+        if (prevTime) {
+          prevHour = parseInt(prevTime.split(':')[0])
+        }
+      }
+
+      // If previous time was afternoon/evening (>= 6), current 7-11 is evening PM
+      // Otherwise, 7-11 is morning AM
+      if (prevHour !== null && prevHour >= 6) {
+        ampm = 'PM'
+      } else {
+        ampm = 'AM'
+      }
     }
 
     if (hour >= 12) {
@@ -205,14 +219,14 @@ export default function FixturesWithAdmin() {
               </tr>
             </thead>
             <tbody>
-              {filteredMatches.map((fixture) => (
+              {filteredMatches.map((fixture, index) => (
                 <tr
                   key={fixture.id}
                   className={fixture.group_name === 'Ceremony' ? 'ceremony' : ''}
                   onClick={() => isAdmin && fixture.group_name !== 'Ceremony' && openScoreModal(fixture)}
                   style={isAdmin && fixture.group_name !== 'Ceremony' ? { cursor: 'pointer' } : {}}
                 >
-                  <td className="time" title={fixture.match_time}>{getStartTime(fixture.match_time)}</td>
+                  <td className="time" title={fixture.match_time}>{getStartTime(fixture.match_time, index, filteredMatches)}</td>
                   <td className="team">{fixture.team_a}</td>
                   <td className="team">{fixture.team_b}</td>
                   {isAdmin && (
