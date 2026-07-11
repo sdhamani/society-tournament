@@ -68,13 +68,18 @@ export async function getMatchScore(matchId) {
 export async function updateMatchScore(matchId, scoreData) {
   try {
     // Delete any existing score for this match
-    await supabase
+    const { error: deleteError } = await supabase
       .from('scores')
       .delete()
       .eq('match_id', matchId)
 
+    if (deleteError) {
+      console.error('Error deleting old score:', deleteError)
+      throw deleteError
+    }
+
     // Insert new score
-    const { data, error } = await supabase
+    const { data, error: insertError } = await supabase
       .from('scores')
       .insert({
         match_id: matchId,
@@ -83,7 +88,7 @@ export async function updateMatchScore(matchId, scoreData) {
       })
       .select()
 
-    if (error) throw error
+    if (insertError) throw insertError
     return data
   } catch (error) {
     console.error('Error updating score:', error)
